@@ -17,15 +17,20 @@ public class Game extends Canvas implements Runnable{
 	
 	public static List<Crab> crabs;
 	
+	public Spawner spawner;
+	
 	public Game() {
 		this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		
 		crabs = new ArrayList<>();
 		
-		crabs.add(new Crab(0,0));
+		spawner = new Spawner();
+		
+	
 	}
 	
 	public void update() {
+		spawner.update();
 		for(int i = 0; i < crabs.size(); i++) {
 			crabs.get(i).update();
 		}
