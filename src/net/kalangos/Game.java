@@ -24,14 +24,16 @@ public class Game extends Canvas implements Runnable, MouseListener {
 	public static int HEIGHT = 480;
 
 	public static List<Crab> crabs;
+	public static List<Smoke> smokes;
+
 	public Spawner spawner;
 	public static Spritesheet spritesheet;
-	
+
 	public static Rectangle maskBuraco;
-	
+
 	public static int score = 0;
-	
-	//coordenadas para o mouse
+
+	// coordenadas para o mouse
 	public static int mx, my;
 	public static boolean isPressed = false;
 
@@ -40,9 +42,10 @@ public class Game extends Canvas implements Runnable, MouseListener {
 		this.addMouseListener(this);
 		spritesheet = new Spritesheet("/spritesheet.png");
 		crabs = new ArrayList<>();
+		smokes = new ArrayList<>();
 		spawner = new Spawner();
-		
-		maskBuraco = new Rectangle(WIDTH/2 - 20, HEIGHT/2 - 20, 40, 40);
+
+		maskBuraco = new Rectangle(WIDTH / 2 - 20, HEIGHT / 2 - 20, 40, 40);
 
 	}
 
@@ -50,6 +53,9 @@ public class Game extends Canvas implements Runnable, MouseListener {
 		spawner.update();
 		for (int i = 0; i < crabs.size(); i++) {
 			crabs.get(i).update();
+		}
+		for (int i = 0; i < smokes.size(); i++) {
+			smokes.get(i).update();
 		}
 	}
 
@@ -68,7 +74,10 @@ public class Game extends Canvas implements Runnable, MouseListener {
 		for (int i = 0; i < crabs.size(); i++) {
 			crabs.get(i).render(g);
 		}
-		
+		for (int i = 0; i < smokes.size(); i++) {
+			smokes.get(i).render(g);
+		}
+
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("arial", Font.BOLD, 23));
 		g.drawString("Score.: " + score, 20, 20);
@@ -111,7 +120,7 @@ public class Game extends Canvas implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -125,18 +134,18 @@ public class Game extends Canvas implements Runnable, MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

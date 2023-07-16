@@ -55,6 +55,7 @@ public class Crab {
 				if(Game.my >= y && Game.my <= y + 40) {
 					Game.crabs.remove(this);
 					Game.score++;
+					Game.smokes.add(new Smoke((int)x,(int)y));
 					return;
 				}
 			}
