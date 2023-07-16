@@ -44,6 +44,21 @@ public class Crab {
 			}
 			curFrames = 0;
 		}
+		//verificar colisão com pontos domouse
+		verificarColisao();
+	}
+	
+	public void verificarColisao() {
+		if(Game.isPressed) {
+			Game.isPressed = false;
+			if(Game.mx >= x && Game.mx <= x + 40) {
+				if(Game.my >= y && Game.my <= y + 40) {
+					Game.crabs.remove(this);
+					Game.score++;
+					return;
+				}
+			}
+		}
 	}
 
 	public void render(Graphics g) {
